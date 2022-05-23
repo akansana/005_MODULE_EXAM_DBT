@@ -1,0 +1,101 @@
+SECTION 1 :
+============
+
+Q1 Create table DEPT with the following structure:-
+==========================================
+SOLUTION :
+----------
+
+CREATE TABLE DEPT
+(
+DEPTNO int(2),
+DNAME varchar(15),
+LOC varchar(10),
+)
+
+-Insert the following rows into the DEPT table:-
+
+INSERT INTO DEPT(DEPTNO,DNAME,LOC ) VALUES (10,'ACCOUNTING', 'NEW YORK');
+INSERT INTO DEPT(DEPTNO,DNAME,LOC ) VALUES (20,'RESEARCH', 'DALLAS');
+INSERT INTO DEPT(DEPTNO,DNAME,LOC ) VALUES (30,'SALES', 'CHICAGO');
+INSERT INTO DEPT(DEPTNO,DNAME,LOC ) VALUES (40,'OPERATIONS', 'BOSTON'); 
+
+
+Q2 Create table EMP with the following structure:-
+=====================================
+
+CREATE TABLE EMP
+(
+EMPNO int(4),
+ENAME varchar(10),
+JOB varchar(9),
+HIREDATE date,
+SAL float(7,2),
+COMM float(7,2),
+DEPTNO int(2)
+)
+
+-Insert the following rows into the EMP table:-
+
+INSERT INTO EMP(EMPNO,ENAME,JOB,HIREDATE,SAL,COMM,DEPTNO) VALUES (7839,'KING','MANAGER','1991-11-17',5000,NULL,10);
+INSERT INTO EMP(EMPNO,ENAME,JOB,HIREDATE,SAL,COMM,DEPTNO) VALUES (7698,'BLAKE','CLERK','1981-05-01',2850,NULL,30);
+INSERT INTO EMP(EMPNO,ENAME,JOB,HIREDATE,SAL,COMM,DEPTNO) VALUES (7782,'CLARK','MANAGER','1981-06-09',2450,NULL,10);
+INSERT INTO EMP(EMPNO,ENAME,JOB,HIREDATE,SAL,COMM,DEPTNO) VALUES (7566,'JONES','CLERK','1981-04-02',2975,NULL,20);
+INSERT INTO EMP(EMPNO,ENAME,JOB,HIREDATE,SAL,COMM,DEPTNO) VALUES (7654,'MARTIN','SALESMAN','1981-09-28',1250,1400,30);
+INSERT INTO EMP(EMPNO,ENAME,JOB,HIREDATE,SAL,COMM,DEPTNO) VALUES (7499,'ALLEN','SALESMAN','1981-02-20',1600,300,30);
+
+
+Q3. Display all the employees where SAL between 2500 and 5000 (inclusive of both).
+================================
+
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL BETWEEN 2500 AND 5000;
+
+Q4. Display all the ENAMEs in descending order of ENAME
+==========================
+
+SELECT ENAME
+FROM EMP 
+ORDER BY ENAME DESC;
+
+Q5. Display all the JOBs in lowercase.
+====================
+
+SELECT LOWER(JOB) AS 'JOBS IN LOWERCASE'
+FROM EMP;
+
+Q6. Display the ENAMEs and the lengths of the ENAMEs
+========================
+
+SELECT ENAME,
+LENGTH(ENAME)
+FROM EMP;
+
+Q7. Display the DEPTNO and the count of employees who belong to that DEPTNO .
+=============================
+
+SELECT DEPTNO,COUNT(*)
+FROM EMP
+GROUP BY DEPTNO;
+
+Q8. Display the DNAMEs and the ENAMEs who belong to that DNAME.
+=============================
+
+SELECT dept.dname, emp.ename
+FROM emp,dept
+WHERE dept.deptno = emp.deptno;
+
+Q9. Display the position at which the string ‘AR’ occurs in the ename
+====================================
+
+SELECT POSITION("AR" IN ENAME )
+FROM EMP ;
+
+
+Q10. Display the HRA for each employee given that HRA is 20% of SAL.
+=========================================
+
+SELECT ENAME, SAL*1/5 AS 'HRA' 
+FROM EMP ;
+
